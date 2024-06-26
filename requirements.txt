@@ -1,0 +1,5 @@
+Flask==3.0.3
+opencv-python-headless
+opencv-python
+dlib
+pillow

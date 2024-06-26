@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keep Awake</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Eye Monitoring</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Keep Awake</h1>
-    <button id="start_stop_btn">Start / Stop</button>
-    <br>
-    <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
-
+    <h1>Eye Monitoring</h1>
+    <div class="camera-feed">
+        <img src="" id="video-feed">
+    </div>
+    <div class="controls">
+        <button id="start-button" onclick="toggleStream()">Start</button>
+    </div>
     <script>
-        $(document).ready(function() {
-            var playing = false;
-            $('#start_stop_btn').click(function() {
-                if (!playing) {
-                    $('#video_feed').attr('src', '{{ url_for('video_feed') }}');
-                    playing = true;
-                } else {
-                    $('#video_feed').attr('src', '');
-                    playing = false;
-                }
-            });
-        });
+        let streaming = false;
+        function toggleStream() {
+            const videoFeed = document.getElementById('video-feed');
+            const startButton = document.getElementById('start-button');
+            if (streaming) {
+                videoFeed.src = "";
+                startButton.innerText = "Start";
+            } else {
+                videoFeed.src = "{{ url_for('video_feed') }}";
+                startButton.innerText = "Stop";
+            }
+            streaming = !streaming;
+        }
     </script>
 </body>
 </html>
