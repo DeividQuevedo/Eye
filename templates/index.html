@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye Monitoring</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Keep Awake</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Eye Monitoring</h1>
-        <div class="controls">
-            <button id="toggle-camera">Open/Close Camera</button>
-            <button id="toggle-app">Start/Stop Application</button>
-        </div>
-        <div class="video-container">
-            <img id="video-feed" src="" alt="Video Feed">
-        </div>
-    </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <h1>Keep Awake</h1>
+    <button id="start_stop_btn">Start / Stop</button>
+    <br>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+
+    <script>
+        $(document).ready(function() {
+            var playing = false;
+            $('#start_stop_btn').click(function() {
+                if (!playing) {
+                    $('#video_feed').attr('src', '{{ url_for('video_feed') }}');
+                    playing = true;
+                } else {
+                    $('#video_feed').attr('src', '');
+                    playing = false;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,36 +1,24 @@
-// Código JavaScript para manipulação dos botões e da imagem da webcam
-// Exemplo básico, pode ser adaptado conforme sua implementação com OpenCV, etc.
-
 document.addEventListener('DOMContentLoaded', function() {
-    const videoFeed = document.getElementById('video-feed');
-    const toggleCameraBtn = document.getElementById('toggle-camera');
-    const toggleAppBtn = document.getElementById('toggle-app');
-    let cameraActive = false;
-    let appRunning = false;
+    let videoPlayer = document.getElementById('video-feed');
+    let toggleCameraBtn = document.getElementById('toggle-camera');
+    let startStopBtn = document.getElementById('start-stop');
+    let streaming = false;
 
+    // Função para alternar a câmera ligada/desligada
     toggleCameraBtn.addEventListener('click', function() {
-        if (cameraActive) {
-            // Lógica para fechar a câmera
-            videoFeed.src = '';
-            cameraActive = false;
-            toggleCameraBtn.textContent = 'Open Camera';
+        if (streaming) {
+            videoPlayer.pause();
+            streaming = false;
+            toggleCameraBtn.textContent = 'Turn Camera On';
         } else {
-            // Lógica para abrir a câmera
-            // Exemplo: videoFeed.src = 'URL_DA_WEBCAM';
-            cameraActive = true;
-            toggleCameraBtn.textContent = 'Close Camera';
+            videoPlayer.play();
+            streaming = true;
+            toggleCameraBtn.textContent = 'Turn Camera Off';
         }
     });
 
-    toggleAppBtn.addEventListener('click', function() {
-        if (appRunning) {
-            // Lógica para parar a aplicação
-            appRunning = false;
-            toggleAppBtn.textContent = 'Start Application';
-        } else {
-            // Lógica para iniciar a aplicação
-            appRunning = true;
-            toggleAppBtn.textContent = 'Stop Application';
-        }
+    // Lógica para iniciar/parar a aplicação (simulação)
+    startStopBtn.addEventListener('click', function() {
+        alert('Starting/Stopping the application!');
     });
 });
