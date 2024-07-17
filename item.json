@@ -1,0 +1,11 @@
+{
+    "3y3sm1n1ngk3y": {"S": "unique_face_id"},
+    "timestamp": {"S": "2024-06-28T12:34:56Z"},
+    "image_data": {"S": "base64_encoded_image_data"},
+    "detection_results": {
+        "M": {
+            "eyes_open": {"BOOL": true},
+            "drowsiness_level": {"N": "0.2"}
+        }
+    }
+}
