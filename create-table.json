@@ -1,0 +1,27 @@
+{
+    "TableName": "EyesMining",
+    "KeySchema": [
+        {
+            "AttributeName": "3y3sm1n1ngk3y",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "timestamp",
+            "KeyType": "RANGE"
+        }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "3y3sm1n1ngk3y",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "timestamp",
+            "AttributeType": "S"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+    }
+}
